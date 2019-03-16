@@ -1,10 +1,4 @@
-FROM php:7.1-apache
-
-RUN apt update -y && apt install libpng-dev -y
-
-RUN docker-php-ext-install mysqli gd pdo_mysql pdo
-RUN pecl install xdebug-2.7.0alpha1
-RUN docker-php-ext-enable xdebug
+FROM 0kami/env:php71-apache
 
 RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.auto_trace=on" >> /usr/local/etc/php/php.ini && \
@@ -17,9 +11,3 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.collect_return=on" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.remote_post=9000" >> /usr/local/etc/php/php.ini
-
-RUN a2enmod rewrite 
-
-RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libgd-dev
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  &&  \
-    docker-php-ext-install gd
