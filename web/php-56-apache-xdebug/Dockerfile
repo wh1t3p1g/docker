@@ -17,4 +17,6 @@ RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.max_nesting_level=250" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.collect_return=on" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/php.ini && \
-    echo "xdebug.remote_post=9000" >> /usr/local/etc/php/php.ini 
+    echo "xdebug.remote_post=9000" >> /usr/local/etc/php/php.ini
+
+RUN a2enmod rewrite 
