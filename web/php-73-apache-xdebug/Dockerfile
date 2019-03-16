@@ -1,13 +1,9 @@
 FROM 0kami/env:php73-apache
 
-RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini && \
+RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.auto_trace=on" >> /usr/local/etc/php/php.ini && \
-    echo "xdebug.trace_output_dir='/tmp/'" >> /usr/local/etc/php/php.ini && \
-    echo 'xdebug.collect_params=4' >> /usr/local/etc/php/php.ini && \
-    echo 'xdebug.remote_autostart=1' >>  /usr/local/etc/php/php.ini && \
-    echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/php.ini && \
-    echo 'xdebug.remote_host=10.254.254.254' >>   /usr/local/etc/php/php.ini && \
-    echo "xdebug.max_nesting_level=250" >> /usr/local/etc/php/php.ini && \
-    echo "xdebug.collect_return=on" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.remote_log = /tmp/xdebug.log" >> /usr/local/etc/php/php.ini && \
+    echo 'xdebug.remote_handler = dbgp' >> /usr/local/etc/php/php.ini && \
     echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/php.ini && \
+    echo "xdebug.remote_host=10.254.254.254" >> /usr/local/etc/php/php.ini && \
     echo "xdebug.remote_post=9000" >> /usr/local/etc/php/php.ini
