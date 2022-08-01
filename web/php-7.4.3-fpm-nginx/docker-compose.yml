@@ -1,0 +1,16 @@
+version: '3'
+services:
+  php:
+    build: "."
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "9000:9000"
+  nginx:
+    image: 'nginx'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d/
+    depends_on:
+      - php
+    ports:
+      - "2333:80"
